@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  gateway:
+    container_name: api.gateway
+    image: api-gateway:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/api-gateway-app
+    ports:
+      - "5555:5555"
+    networks:
+      - spring-cloud-network
+networks:
+  spring-cloud-network:
+    driver: bridge
+
